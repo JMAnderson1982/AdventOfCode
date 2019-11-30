@@ -1,0 +1,120 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "group" : {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "build:2015",
+                "build:2016",
+                "build:2017",
+                "build:2018",
+                "build:2019"
+            ]
+        },
+        {
+            "label": "build:shared",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AdventOfCode.Shared/AdventOfCode.Shared.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build:2015",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AdventOfCode.2015/AdventOfCode.2015.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "build:shared"
+            ]
+        },
+        {
+            "label": "build:2016",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AdventOfCode.2016/AdventOfCode.2016.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "build:shared"
+            ]
+        },
+        {
+            "label": "build:2017",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AdventOfCode.2017/AdventOfCode.2017.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "build:shared"
+            ]
+        },
+        {
+            "label": "build:2018",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AdventOfCode.2018/AdventOfCode.2018.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "build:shared"
+            ]
+        },
+        {
+            "label": "build:2019",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AdventOfCode.2019/AdventOfCode.2019.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "build:shared"
+            ]
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/AdventOfCode.2015/AdventOfCode.2015.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/AdventOfCode.2015/AdventOfCode.2015.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

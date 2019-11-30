@@ -30,7 +30,11 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Documents\\dev\\AdventOfCode\\AdventOfCode.Shared\\AdventOfCode.Shared.csproj": {
+                "projectPath": "D:\\Documents\\dev\\AdventOfCode\\AdventOfCode.Shared\\AdventOfCode.Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -46,6 +50,59 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Documents\\dev\\AdventOfCode\\AdventOfCode.Shared\\AdventOfCode.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\dev\\AdventOfCode\\AdventOfCode.Shared\\AdventOfCode.Shared.csproj",
+        "projectName": "AdventOfCode.Shared",
+        "projectPath": "D:\\Documents\\dev\\AdventOfCode\\AdventOfCode.Shared\\AdventOfCode.Shared.csproj",
+        "packagesPath": "C:\\Users\\james\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\dev\\AdventOfCode\\AdventOfCode.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\james\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.gaidge.com/nuget/Default": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
               "autoReferenced": true
             }
           },

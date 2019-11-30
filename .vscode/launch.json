@@ -1,0 +1,69 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "AoC 2015",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AdventOfCode.2015/bin/Debug/netcoreapp2.2/AdventOfCode.2015.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AdventOfCode.2015",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "AoC 2016",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AdventOfCode.2016/bin/Debug/netcoreapp2.2/AdventOfCode.2016.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AdventOfCode.2016",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "AoC 2017",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AdventOfCode.2017/bin/Debug/netcoreapp2.2/AdventOfCode.2017.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AdventOfCode.2017",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "AoC 2018",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AdventOfCode.2018/bin/Debug/netcoreapp2.2/AdventOfCode.2018.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AdventOfCode.2018",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "AoC 2019",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AdventOfCode.2019/bin/Debug/netcoreapp2.2/AdventOfCode.2019.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AdventOfCode.2019",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}
