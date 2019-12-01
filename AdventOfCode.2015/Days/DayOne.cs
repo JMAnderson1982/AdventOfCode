@@ -5,9 +5,9 @@ namespace AdventOfCode._2015.Days
 
     class DayOne
     {
-        public static Day GetDay()
+        public static Result GetDay()
         {
-            var day = new Day();
+            var day = new Result();
             var elevator = new Elevator();
             var commands = System.IO.File.ReadAllText("Input/DayOne.txt");
 

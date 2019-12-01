@@ -7,9 +7,9 @@ namespace AdventOfCode._2015.Days
 
     public class DayTwo
     {
-        public static Day GetDay()
+        public static Result GetDay()
         {
-            var day = new Day();
+            var day = new Result();
             var presentsRaw = System.IO.File.ReadAllText("Input/DayTwo.txt").Split("\r\n");
 
             var presents = new List<Present>();
