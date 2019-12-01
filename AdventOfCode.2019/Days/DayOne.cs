@@ -3,14 +3,16 @@ namespace AdventOfCode._2019.Days
     using System;
     using AdventOfCode.Shared;
 
-    class DayOne
+    class DayOne : Day
     {
-        public static Result GetDay()
+        public DayOne() :base()
         {
-            var day = new Result();
+            Date = 1;
+        }
+        public override void TheNeedful()
+        {
+            var masses = Input.Split("\r\n");
             
-            var masses = System.IO.File.ReadAllText("Input/DayOne.txt").Split("\r\n");
-
             var fuelForRawMass = 0;
             var totalFuel = 0;
 
@@ -22,9 +24,8 @@ namespace AdventOfCode._2019.Days
                 totalFuel += GetFuelForMass(mass);
             }
 
-            day.NewPartOne = fuelForRawMass.ToString();
-            day.NewPartTwo = totalFuel.ToString();
-            return day;
+            PartOne = fuelForRawMass.ToString();
+            PartTwo = totalFuel.ToString();
         }
 
         private static int GetFuelForMass(int mass)

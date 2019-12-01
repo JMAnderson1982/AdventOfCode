@@ -5,18 +5,20 @@ namespace AdventOfCode._2015.Days
     using System.Linq;
     using AdventOfCode.Shared;
 
-    public class DayTwo
+    public class DayTwo : Day
     {
-        public static Result GetDay()
+        public DayTwo() : base()
         {
-            var day = new Result();
-            var presentsRaw = System.IO.File.ReadAllText("Input/DayTwo.txt").Split("\r\n");
+            Date = 2;
+        }
 
-            var presents = new List<Present>();
+        public override void TheNeedful()
+        {
+            var presents = Input.Split("\r\n");
 
             var surfaceArea = 0;
             var ribbonLength = 0;
-            foreach(var presentRaw in presentsRaw)
+            foreach(var presentRaw in presents)
             {
                 var dims = presentRaw.Split('x');
 
@@ -29,10 +31,9 @@ namespace AdventOfCode._2015.Days
                 ribbonLength += present.GetNeededRibbon();
             }
 
-            day.NewPartOne = surfaceArea.ToString();
-            day.NewPartTwo = ribbonLength.ToString();
+            PartOne = surfaceArea.ToString();
+            PartTwo = ribbonLength.ToString();
 
-            return day;
         }
 
         private class Present

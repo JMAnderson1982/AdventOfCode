@@ -5,20 +5,11 @@ namespace AdventOfCode._2015.Days
     using System.Linq;
     using AdventOfCode.Shared;
 
-    public class DayThree
+    public class DayThree : Day
     {
-        public static Result GetDay()
+        public DayThree() : base()
         {
-            var day = new Result();
-            var presentsRaw = System.IO.File.ReadAllText("Input/DayOne.txt");
-
-            return day;
-        }
-
-        private class Grid
-        {
-            
-
+            Date = 3;
         }
     }
 }

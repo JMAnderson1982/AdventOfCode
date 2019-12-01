@@ -9,9 +9,12 @@
         {
             var advent = new Advent{ Year = 2019 };
             
-            advent.Days[0] = DayOne.GetDay();
+            // advent.Days[0] = DayOne.GetDay();
             // advent.Days[1] = DayTwo.GetDay();
             // advent.Days[2] = DayThree.GetDay();
+
+            advent.NewDays.Add(new DayOne());
+            
 
             advent.ShowResults();
         }

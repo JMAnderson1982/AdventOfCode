@@ -1,32 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Shared
 {
 
     public class Advent
     {
-        public Result[] Days { get; set; }
-
+        public List<Day> NewDays { get; set; }
+        
         public int Year { get; set; }
 
         public Advent()
         {
-            Days = new Result[25];
+            NewDays = new List<Day>();
         }
 
         public void ShowResults()
         {
-            Console.WriteLine($"\t\tAdvent of Code {Year}");
+            Console.WriteLine($"\t\tAdvent of Code {Year}");   
             
-            var i = 1;
-
-            foreach(var day in Days)
+            foreach(var day in NewDays.OrderBy(d => d.Date))
             {
                 if(day == null) { continue; }
 
-                Console.WriteLine($"{i}\t{day.NewPartOne}\t{day.NewPartTwo}");
-                
-                i++;
+                Console.WriteLine($"{day.Date}\t{day.PartOne}\t{day.PartTwo}");
             }
         }
     }

@@ -1,7 +1,8 @@
-using System;
-
 namespace AdventOfCode.Shared
-{
+{   
+    using System;
+    
+    [Obsolete]
     public class Result 
     {
         public string NewPartOne { get; set; }

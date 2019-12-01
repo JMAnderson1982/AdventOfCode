@@ -3,20 +3,20 @@ namespace AdventOfCode._2015.Days
     using System;
     using AdventOfCode.Shared;
 
-    class DayOne
+    class DayOne : Day
     {
-        public static Result GetDay()
+        public DayOne() : base()
         {
-            var day = new Result();
+            Date = 1;
+        }
+
+        public override void TheNeedful()
+        {
             var elevator = new Elevator();
-            var commands = System.IO.File.ReadAllText("Input/DayOne.txt");
-
-            elevator.parseCommands(commands);
-
-            day.NewPartOne = elevator.Floor;
-            day.NewPartTwo = elevator.BasementIndex;
-
-            return day;
+            elevator.parseCommands(Input);
+            
+            PartOne = elevator.Floor;
+            PartTwo = elevator.BasementIndex;
         }
 
         private class Elevator
