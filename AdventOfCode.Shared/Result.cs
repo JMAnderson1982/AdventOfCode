@@ -24,7 +24,7 @@ namespace AdventOfCode.Shared
             {
                 if(day == null) { continue; }
 
-                Console.WriteLine($"{i}\t{day.PartOne.Result}\t{day.PartTwo.Result}");
+                Console.WriteLine($"{i}\t{day.NewPartOne}\t{day.NewPartTwo}");
                 
                 i++;
             }

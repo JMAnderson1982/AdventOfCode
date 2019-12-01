@@ -29,8 +29,8 @@ namespace AdventOfCode._2015.Days
                 ribbonLength += present.GetNeededRibbon();
             }
 
-            day.PartOne.Result = surfaceArea.ToString();
-            day.PartTwo.Result = ribbonLength.ToString();
+            day.NewPartOne = surfaceArea.ToString();
+            day.NewPartTwo = ribbonLength.ToString();
 
             return day;
         }

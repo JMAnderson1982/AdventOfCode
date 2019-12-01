@@ -13,8 +13,8 @@ namespace AdventOfCode._2015.Days
 
             elevator.parseCommands(commands);
 
-            day.PartOne.Result = elevator.Floor;
-            day.PartTwo.Result = elevator.BasementIndex;
+            day.NewPartOne = elevator.Floor;
+            day.NewPartTwo = elevator.BasementIndex;
 
             return day;
         }

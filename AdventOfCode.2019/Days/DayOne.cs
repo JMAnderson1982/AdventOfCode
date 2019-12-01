@@ -22,8 +22,8 @@ namespace AdventOfCode._2019.Days
                 totalFuel += GetFuelForMass(mass);
             }
 
-            day.PartOne.Result = fuelForRawMass.ToString();
-            day.PartTwo.Result = totalFuel.ToString();
+            day.NewPartOne = fuelForRawMass.ToString();
+            day.NewPartTwo = totalFuel.ToString();
             return day;
         }
 
