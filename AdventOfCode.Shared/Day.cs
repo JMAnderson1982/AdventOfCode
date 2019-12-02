@@ -12,17 +12,22 @@ namespace AdventOfCode.Shared
             PartOne = "--";
             PartTwo = "--";
 
-            var dayAsString = this.GetType().Name;
-            try{
-                Input = System.IO.File.ReadAllText($"Input/{dayAsString}.txt");
-            }
-            catch {}
+            ResetInput();
 
             TheNeedful();
         }
         public virtual void TheNeedful()
         {
-            
+
+        }
+
+        public void ResetInput()
+        {
+            var dayAsString = this.GetType().Name;
+            try{
+                Input = System.IO.File.ReadAllText($"Input/{dayAsString}.txt");
+            }
+            catch {}
         }
     }
 }

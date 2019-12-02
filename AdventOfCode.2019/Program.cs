@@ -14,6 +14,7 @@
             // advent.Days[2] = DayThree.GetDay();
 
             advent.NewDays.Add(new DayOne());
+            advent.NewDays.Add(new DayTwo());
             
 
             advent.ShowResults();
