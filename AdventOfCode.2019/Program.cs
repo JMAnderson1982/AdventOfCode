@@ -1,23 +1,25 @@
 ﻿namespace AdventOfCode._2019
 {
-
+    using System;
     using AdventOfCode._2019.Days;
     using AdventOfCode.Shared;
     class Program
     {
         static void Main(string[] args)
         {
+            var now = DateTime.Now;
             var advent = new Advent{ Year = 2019 };
-            
-            // advent.Days[0] = DayOne.GetDay();
-            // advent.Days[1] = DayTwo.GetDay();
-            // advent.Days[2] = DayThree.GetDay();
 
             advent.NewDays.Add(new DayOne());
             advent.NewDays.Add(new DayTwo());
+            advent.NewDays.Add(new DayThree());
+            advent.NewDays.Add(new DayFour());
+            advent.NewDays.Add(new DayFive());
+            advent.NewDays.Add(new DaySix());
             
 
             advent.ShowResults();
+            Console.WriteLine($"\n{(DateTime.Now - now).TotalMilliseconds}ms");
         }
     }
 

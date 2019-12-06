@@ -39,5 +39,5 @@ namespace AdventOfCode._2019.Days
 
             return fuel + GetFuelForMass(fuel);
         }
-    }    
+    }
 }

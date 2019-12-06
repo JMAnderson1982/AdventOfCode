@@ -13,13 +13,13 @@ namespace AdventOfCode.Shared
             PartTwo = "--";
 
             ResetInput();
-
             TheNeedful();
         }
         public virtual void TheNeedful()
         {
 
         }
+        public virtual void SetInput(){}
 
         public void ResetInput()
         {
