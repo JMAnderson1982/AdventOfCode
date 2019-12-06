@@ -5,10 +5,7 @@ namespace AdventOfCode._2015.Days
 
     class DayOne : Day
     {
-        public DayOne() : base()
-        {
-            Date = 1;
-        }
+        public DayOne() : base(1) {}
 
         public override void TheNeedful()
         {

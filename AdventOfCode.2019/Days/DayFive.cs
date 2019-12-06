@@ -6,10 +6,7 @@ namespace AdventOfCode._2019.Days{
 
     public class DayFive : Day
     {
-        public DayFive() : base()
-        {
-            Date = 5;
-        }
+        public DayFive() : base(5) {}
 
         public override void TheNeedful()
         {

@@ -5,19 +5,18 @@ namespace AdventOfCode._2019.Days
 
     class DayOne : Day
     {
-        public DayOne() :base()
-        {
-            Date = 1;
-        }
+        public DayOne() :base(1) {}
+        
         public override void TheNeedful()
         {
-            var masses = Input.Split("\r\n");
+            var masses = Input.Split("\n");
             
             var fuelForRawMass = 0;
             var totalFuel = 0;
 
             foreach( var massString in masses)
             {
+                if(massString == string.Empty) {continue;}
                 var mass = int.Parse(massString);
 
                 fuelForRawMass += mass / 3 - 2;

@@ -6,21 +6,19 @@ namespace AdventOfCode._2019.Days{
 
     public class DaySix : Day
     {
-        public DaySix() : base()
-        {
-            Date = 6;
-        }
+        public DaySix() : base(6) {}
 
         public override void TheNeedful()
         {
             // var defs = TestMap.Split("\r\n");
             // var defs = TestMap2.Split("\r\n");
-            var defs = Input.Split("\r\n");
+            var defs = Input.Split("\n");
 
             var map = new Map();
 
             foreach( var def in defs ) 
             {
+                if(def == string.Empty){continue;}
                 var objects = def.Split(')');
                 map.Orbits.Add( new Orbit{ Name = objects[1], ParentName = objects[0]});
             }

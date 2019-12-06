@@ -7,9 +7,6 @@ namespace AdventOfCode._2015.Days
 
     public class DayThree : Day
     {
-        public DayThree() : base()
-        {
-            Date = 3;
-        }
+        public DayThree() : base(3) {}
     }
 }

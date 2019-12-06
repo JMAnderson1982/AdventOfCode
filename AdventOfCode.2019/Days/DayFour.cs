@@ -3,10 +3,7 @@ namespace AdventOfCode._2019.Days
     using AdventOfCode.Shared;
     class DayFour : Day
     {
-        public DayFour() : base()
-        {
-            Date = 4;
-        }
+        public DayFour() : base(4) { }
 
         public override void TheNeedful()
         {

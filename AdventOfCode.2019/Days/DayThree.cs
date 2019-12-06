@@ -7,13 +7,10 @@ namespace AdventOfCode._2019.Days
 
     class DayThree : Day
     {
-        public DayThree() :base()
-        {
-            Date = 3;
-        }
+        public DayThree() :base(3) {}
         public override void TheNeedful()
         {
-            var wires = Input.Split("\r\n");
+            var wires = Input.Split("\n");
 
             var redLines = MakeList(wires[0]);
             var blueLines = MakeList(wires[1]);

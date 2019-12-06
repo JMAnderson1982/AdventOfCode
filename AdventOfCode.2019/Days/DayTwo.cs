@@ -8,10 +8,7 @@ namespace AdventOfCode._2019.Days
 
     public class DayTwo : Day
     {
-        public DayTwo() : base()
-        {
-            Date = 2;
-        }
+        public DayTwo() : base(2) {}
 
         public override void TheNeedful()
         {
