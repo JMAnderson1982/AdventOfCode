@@ -24,7 +24,6 @@ namespace AdventOfCode._2019.Days
                 for( int verb = 0; verb < 100; verb++)
                 {
                     var code = $"{noun.ToString("D2")}{verb.ToString("D2")}";
-                    computer = new Computer();
                     computer.LoadProgram(Input);
                     computer.LoadAlarmCode(code);
                     computer.Run();

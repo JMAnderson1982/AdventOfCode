@@ -3,6 +3,7 @@ namespace AdventOfCode._2019.Components
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using AdventOfCode.Shared.Extensions;
 
     public class Computer
     {
@@ -10,13 +11,23 @@ namespace AdventOfCode._2019.Components
 
         public List<int> Program { get; set; } = new List<int>();
 
-        private int __OpCode => Program[Address];
+        private int __Instruction => Program[Address];
+        private int __Opcode => __Instruction % 100;
         private int __ParamOne => Program[Address + 1];
+        private int __ModeOne => __Instruction / 100 % 10;
         private int __ParamTwo => Program[Address + 2];
+        private int __ModeTwo => __Instruction / 1000 % 10;
         private int __ParamThree => Program[Address + 3];
+        private int __ModeThree => __Instruction / 10000 % 10;
+
+        private int __OperandOne => __ModeOne == 0 ? Program[__ParamOne] : __ParamOne;
+        private int __OperandTwo => __ModeTwo == 0 ? Program[__ParamTwo] : __ParamTwo;
+        private int __OperandThree => __ModeThree == 0 ? Program[__ParamThree] : __ParamThree;
+        
 
         public void LoadProgram(string program)
         {
+            Address = 0;
             Program = program.Split(',').Select(c => int.Parse(c)).ToList();
         }
 
@@ -34,49 +45,73 @@ namespace AdventOfCode._2019.Components
             return string.Join(',', Program);
         }
 
-        public void Run()
+        public List<int> Run(List<int> input = null)
         {       
-            while(__OpCode != 99)
+            var output = new List<int>();
+            while(__Opcode != 99)
             {
-                var stepLength = GetInstructionSize(__OpCode);     
-                switch(__OpCode)    
+                var stepLength = GetInstructionSize(__Opcode);     
+                switch(__Opcode)    
                 {
                     case 1: 
-                        Add();
+                        Program[__ParamThree] = __OperandOne + __OperandTwo;
                         break;
                     case 2:
-                        Mul();
+                        Program[__ParamThree] = __OperandOne * __OperandTwo;
                         break;
-                    case 99:
-                        return;
+                    case 3:
+                        Program[__ParamOne] = input.Shift();
+                        break;
+                    case 4:
+                        output.Add(__OperandOne);
+                        break;
+                    case 5:
+                        if(__OperandOne != 0)
+                        {
+                            Address = __OperandTwo;
+                            stepLength = 0;
+                        }
+                        break;
+                    case 6:
+                        if(__OperandOne == 0)
+                        {
+                            Address = __OperandTwo;
+                            stepLength = 0;
+                        }
+                        break;
+                    case 7:
+                        Program[__ParamThree] = __OperandOne < __OperandTwo ? 1 : 0;
+                        break;
+                    case 8:
+                        Program[__ParamThree] = __OperandOne == __OperandTwo ? 1 : 0;
+                        break;
+                        
                     default:
-                        throw new NotImplementedException($"Shits fucked: {__OpCode}");
+                        throw new NotImplementedException($"Shits fucked: {__Instruction}");
                 
                 }
                 Address += stepLength;
-                Run();
             }
-        }
-
-        public void Add()
-        {
-            Program[__ParamThree] = Program[__ParamOne] + Program[__ParamTwo];
-        }
-
-        public void Mul()
-        {
-            Program[__ParamThree] = Program[__ParamOne] * Program[__ParamTwo];
+            return output;
         }
 
         public int GetInstructionSize(int opCode)
         {
             switch(opCode)
             {
-                case 1:
-                case 2:
-                    return 4;
                 case 99:
                     return 1;
+                case 3:
+                case 4:
+                    return 2;
+                case 5:
+                case 6:
+                    return 3;
+                case 1:
+                case 2:
+                case 7:
+                case 8:
+                    return 4;
                 default:
                     throw new NotImplementedException();
             }
