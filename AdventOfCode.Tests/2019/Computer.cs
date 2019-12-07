@@ -1,5 +1,6 @@
 namespace AdventOfCode.Tests._2019
 {
+    using System.Collections.Generic;
     using System.Linq;
     using AdventOfCode._2019.Components;
     using Xunit;
@@ -92,6 +93,18 @@ namespace AdventOfCode.Tests._2019
             Computer.LoadAlarmCode(code);
             Assert.Equal(noun, Computer.Program[1]);
             Assert.Equal(verb, Computer.Program[2]);
+        }
+        [Theory,
+        InlineData("0,1", "1,0;0,1"),
+        InlineData("0,1,2", "2,1,0;1,2,0;2,0,1;0,2,1;1,0,2;0,1,2")]
+        public void GetPermutations(string input, string output)
+        {
+            var result = Computer.GetPermutations(input.Split(",").Select(i => int.Parse(i)).ToList());
+            
+            var result2 = result.Select(r => string.Join(',',r));
+
+            Assert.Equal(output, string.Join(';', result2));
+
         }
     }
 }

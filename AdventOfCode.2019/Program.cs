@@ -16,7 +16,7 @@
             advent.NewDays.Add(new DayFour());
             advent.NewDays.Add(new DayFive());
             advent.NewDays.Add(new DaySix());
-            
+            advent.NewDays.Add(new DaySeven());
 
             advent.ShowResults();
             Console.WriteLine($"\n{(DateTime.Now - now).TotalMilliseconds}ms");

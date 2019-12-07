@@ -60,7 +60,8 @@ namespace AdventOfCode._2019.Components
                         Program[__ParamThree] = __OperandOne * __OperandTwo;
                         break;
                     case 3:
-                        Program[__ParamOne] = input.Shift();
+                        try{Program[__ParamOne] = input.Shift();}
+                        catch{return output;}
                         break;
                     case 4:
                         output.Add(__OperandOne);
@@ -69,14 +70,14 @@ namespace AdventOfCode._2019.Components
                         if(__OperandOne != 0)
                         {
                             Address = __OperandTwo;
-                            stepLength = 0;
+                            continue;
                         }
                         break;
                     case 6:
                         if(__OperandOne == 0)
                         {
                             Address = __OperandTwo;
-                            stepLength = 0;
+                            continue;
                         }
                         break;
                     case 7:
@@ -115,6 +116,25 @@ namespace AdventOfCode._2019.Components
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        public static List<List<int>> GetPermutations(List<int> list)
+        {
+            var permutations = new List<List<int>>();
+            for(int i = 0; i < list.Count; i++)
+            {
+                var first = list[i];
+                var subList = new List<int>(list);
+                subList.Remove(first);
+                var newList = GetPermutations(subList);
+                newList.ForEach(l => l.Add(first));
+                permutations.AddRange(newList);
+            }
+            if(permutations.Count() == 0)
+            {
+                permutations.Add(new List<int>());
+            }
+            return permutations;
         }
     }
 }

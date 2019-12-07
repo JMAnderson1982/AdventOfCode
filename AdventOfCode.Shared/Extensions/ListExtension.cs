@@ -1,5 +1,6 @@
 namespace AdventOfCode.Shared.Extensions
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -11,6 +12,10 @@ namespace AdventOfCode.Shared.Extensions
             list.RemoveAt(0);
             return o;
         }
-
+        
+        public static IList<T> Clone<T>(this IList<T> listToClone) where T: ICloneable
+        {
+            return listToClone.Select(item => (T)item.Clone()).ToList();
+        }
     }
 }
