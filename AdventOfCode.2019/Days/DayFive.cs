@@ -19,8 +19,5 @@ namespace AdventOfCode._2019.Days{
             computer.LoadProgram(Input);
             PartTwo = computer.Run(new List<int>{5}).Last().ToString(); 
         }
-
-
     }
-
 }

@@ -33,32 +33,6 @@ namespace AdventOfCode._2019.Days
                         return;
                     }
                 }
-
-
-
-            // var rawCommands = Input.Split(',').ToList();
-            
-            // var commands = rawCommands.Select(c => int.Parse(c)).ToList();
-
-            // for(int i = 0; i < commands.Count(); i += 4)
-            // {
-            //     if(commands[i] == 99) {break;}
-            //     switch(commands[i])
-            //     {
-            //         case 1:
-            //             commands[commands[i + 3]] = commands[commands[i + 1]] + commands[commands[i + 2]];
-            //             break;
-            //         case 2:
-            //             commands[commands[i + 3]] = commands[commands[i + 1]] * commands[commands[i + 2]];
-            //             break;
-            //         case 99:
-                        
-            //             break;
-            //     }
-            // }
-
-            // // PartOne = ComputerStatic.Compute(Input);
-            // PartTwo = ComputerStatic.Compute(Input, 19690720);
         }
     }
 }
