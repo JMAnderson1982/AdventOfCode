@@ -1,5 +1,6 @@
 namespace AdventOfCode._2019.Days
 {
+    using System.Linq;
     using AdventOfCode.Shared;
     class DayFour : Day
     {
@@ -17,45 +18,44 @@ namespace AdventOfCode._2019.Days
             {
                 var asString = i.ToString();
 
-                if(!(asString[0] != asString[1] 
-                    && asString[1] != asString[2] 
-                    && asString[2] != asString[3]
-                    && asString[3] != asString[4]
-                    && asString[4] != asString[5])
-                    && asString[0] <= asString[1]
-                    && asString[1] <= asString[2]
-                    && asString[2] <= asString[3]
-                    && asString[3] <= asString[4]
-                    && asString[4] <= asString[5]
-                    )
+                if( IsAscending(asString) )
+                {
+                    if( HasDuplicate(asString) )
                     { validCount++; }
                 
-                if(
-                    HasExactDuplicate(asString)
-                    && asString[0] <= asString[1]
-                    && asString[1] <= asString[2]
-                    && asString[2] <= asString[3]
-                    && asString[3] <= asString[4]
-                    && asString[4] <= asString[5])  
+                
+                    if( HasExactDuplicate(asString) )  
                     { limitedValidCount++; }
+                }
             }
+            
             PartOne = validCount.ToString();
             PartTwo = limitedValidCount.ToString();
+        }
 
+        public bool IsAscending(string input)
+        {
+            int last = 0;
+
+            foreach( var c in input)
+            {
+                var digit = (int)char.GetNumericValue(c);
+                if(digit < last)
+                    return false;
+                last = digit;
+            }
+            return true;
+        }
+
+        public bool HasDuplicate(string input)
+        {
+            return input.ToCharArray().GroupBy(i => i).Any(g => g.Count() >= 2);
         }
 
         public bool HasExactDuplicate(string input)
         {
-            for(int i = 0; i < 10; i++)
-            {
-            var letter = i.ToString();
-
-            if(input.Contains($"{letter}{letter}")
-                && !input.Contains($"{letter}{letter}{letter}"))
-                {return true;}
-            }
-            return false;
-  }
+            return input.ToCharArray().GroupBy(i => i).Any(g => g.Count() == 2);
+        }
 
         public override void SetInput()
         {
