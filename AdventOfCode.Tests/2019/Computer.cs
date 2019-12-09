@@ -24,14 +24,14 @@ namespace AdventOfCode.Tests._2019
 
         [Theory,
         //Day 2, Part 1
-        InlineData("1,9,10,3,2,3,11,0,99,30,40,50","3500,9,10,70,2,3,11,0,99,30,40,50"),
-        InlineData("1,0,0,0,99", "2,0,0,0,99"),
-        InlineData("2,3,0,3,99", "2,3,0,6,99"),
-        InlineData("2,4,4,5,99,0", "2,4,4,5,99,9801"),
-        InlineData("1,1,1,4,99,5,6,0,99", "30,1,1,4,2,5,6,0,99"),
+        InlineData("1,9,10,3,2,3,11,0,99,30,40,50","[0, 3500],[1, 9],[2, 10],[3, 70],[4, 2],[5, 3],[6, 11],[7, 0],[8, 99],[9, 30],[10, 40],[11, 50]"),
+        InlineData("1,0,0,0,99", "[0, 2],[1, 0],[2, 0],[3, 0],[4, 99]"),
+        InlineData("2,3,0,3,99", "[0, 2],[1, 3],[2, 0],[3, 6],[4, 99]"),
+        InlineData("2,4,4,5,99,0", "[0, 2],[1, 4],[2, 4],[3, 5],[4, 99],[5, 9801]"),
+        InlineData("1,1,1,4,99,5,6,0,99", "[0, 30],[1, 1],[2, 1],[3, 4],[4, 2],[5, 5],[6, 6],[7, 0],[8, 99]"),
         //Day 5, Part 1
-        InlineData("1002,4,3,4,33", "1002,4,3,4,99"),
-        InlineData("1101,100,-1,4,0", "1101,100,-1,4,99")]
+        InlineData("1002,4,3,4,33", "[0, 1002],[1, 4],[2, 3],[3, 4],[4, 99]"),
+        InlineData("1101,100,-1,4,0", "[0, 1101],[1, 100],[2, -1],[3, 4],[4, 99]")]
         
         public void StateExamples(string initial, string final)
         {
@@ -60,14 +60,18 @@ namespace AdventOfCode.Tests._2019
         InlineData("3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99", "7", "999"),
         InlineData("3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99", "8", "1000"),
         InlineData("3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99", "9", "1001"),
+        InlineData("109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99","1", "109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99"),
+        InlineData("1102,34915192,34915192,7,4,7,99,0", "1", "1219070632396864"),
+        InlineData("104,1125899906842624,99", "1", "1125899906842624")
         ]
         public void OutputExamples(string program, string inputString, string output )
         {
             Computer.LoadProgram(program);
-            var input = inputString.Split(',').Select(i => int.Parse(i)).ToList();
+            var input = inputString.Split(',').Select(i => long.Parse(i)).ToList();
             var result = Computer.Run(input);
             Assert.Equal(output, string.Join(',', result));
         }
+
 
         [Theory,
         InlineData(1,4),
@@ -78,6 +82,7 @@ namespace AdventOfCode.Tests._2019
         InlineData(6,3),
         InlineData(7,4),
         InlineData(8,4),
+        InlineData(9,2),
         InlineData(99,1)]
         public void GetInstructionSize(int opCode, int expectedSize)
         {
@@ -99,7 +104,7 @@ namespace AdventOfCode.Tests._2019
         InlineData("0,1,2", "2,1,0;1,2,0;2,0,1;0,2,1;1,0,2;0,1,2")]
         public void GetPermutations(string input, string output)
         {
-            var result = Computer.GetPermutations(input.Split(",").Select(i => int.Parse(i)).ToList());
+            var result = Computer.GetPermutations(input.Split(",").Select(i => long.Parse(i)).ToList());
             
             var result2 = result.Select(r => string.Join(',',r));
 

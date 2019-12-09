@@ -17,34 +17,34 @@ namespace AdventOfCode._2019.Days
             var computer = new Computer();
             computer.LoadProgram(Input);
             
-            var output = computer.Run(new List<int> {4,0});
+            var output = computer.Run(new List<long> {4,0});
             computer.LoadProgram(Input);
-            output = computer.Run(new List<int> {3,output[0]});
+            output = computer.Run(new List<long> {3,output[0]});
             computer.LoadProgram(Input);
-            output = computer.Run(new List<int> {2,output[0]});
+            output = computer.Run(new List<long> {2,output[0]});
             computer.LoadProgram(Input);
-            output = computer.Run(new List<int> {1,output[0]});
+            output = computer.Run(new List<long> {1,output[0]});
             computer.LoadProgram(Input);
-            output = computer.Run(new List<int> {0,output[0]});
+            output = computer.Run(new List<long> {0,output[0]});
             
             Console.WriteLine(output[0].ToString());
 
             PartOne = Amplify(GetPhases(), 0).ToString();
 
-            var thrust = AmplifyFeedback(new List<int> {5,6,7,8,9});
+            var thrust = AmplifyFeedback(new List<long> {5,6,7,8,9});
             PartTwo = thrust.ToString();
             Console.WriteLine(thrust);
         }
 
-        public int Amplify(List<int> phases, int input)
+        public long Amplify(List<long> phases, long input)
         {
             var computer = new Computer();
-            int max = input;
+            long max = input;
             for(int i = 0; i < phases.Count; i++)
             {
-                var deltaPhases = new List<int>(phases);
+                var deltaPhases = new List<long>(phases);
                 computer.LoadProgram(Input);
-                var output = computer.Run(new List<int> {phases[i],input});
+                var output = computer.Run(new List<long> {phases[i],input});
                 deltaPhases.Remove(phases[i]);
                 var nextPhase = Amplify(deltaPhases, output[0]);
                 if(max < nextPhase)
@@ -55,9 +55,9 @@ namespace AdventOfCode._2019.Days
             return max;
         }
 
-        public int AmplifyFeedback(List<int> phases)
+        public long AmplifyFeedback(List<long> phases)
         {
-            int max = 0;
+            long max = 0;
             foreach(var phaseSet in Computer.GetPermutations(phases))
             {
                 var ampA = new Computer();
@@ -70,11 +70,11 @@ namespace AdventOfCode._2019.Days
                 ampC.LoadProgram(Input);
                 ampD.LoadProgram(Input);
                 ampE.LoadProgram(Input);
-                var inputA = new List<int> {phaseSet[0],0};
-                var inputB = new List<int> {phaseSet[1]};
-                var inputC = new List<int> {phaseSet[2]};
-                var inputD = new List<int> {phaseSet[3]};
-                var inputE = new List<int> {phaseSet[4]};
+                var inputA = new List<long> {phaseSet[0],0};
+                var inputB = new List<long> {phaseSet[1]};
+                var inputC = new List<long> {phaseSet[2]};
+                var inputD = new List<long> {phaseSet[3]};
+                var inputE = new List<long> {phaseSet[4]};
                 try{
                 while(true)
                 {
@@ -115,9 +115,9 @@ namespace AdventOfCode._2019.Days
             return permutations;
         }
 
-        public List<int> GetPhases()
+        public List<long> GetPhases()
         {
-            return new List<int>{0,1,2,3,4};
+            return new List<long> {0,1,2,3,4};
         }
     }
 }

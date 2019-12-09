@@ -23,12 +23,11 @@ namespace AdventOfCode._2019.Days
                     if( HasDuplicate(asString) )
                     { validCount++; }
                 
-                
                     if( HasExactDuplicate(asString) )  
                     { limitedValidCount++; }
                 }
             }
-            
+
             PartOne = validCount.ToString();
             PartTwo = limitedValidCount.ToString();
         }

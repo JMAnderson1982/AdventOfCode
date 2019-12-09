@@ -9,26 +9,60 @@ namespace AdventOfCode._2019.Components
     {
         public int Address { get; set; } = 0;
 
-        public List<int> Program { get; set; } = new List<int>();
+        public long RelativeBase { get; set; } = 0;
 
-        private int __Instruction => Program[Address];
+        public Dictionary<long,long> Program { get; set; } = new Dictionary<long,long>();
+
+        private int __Instruction => (int)Program[Address];
         private int __Opcode => __Instruction % 100;
-        private int __ParamOne => Program[Address + 1];
-        private int __ModeOne => __Instruction / 100 % 10;
-        private int __ParamTwo => Program[Address + 2];
-        private int __ModeTwo => __Instruction / 1000 % 10;
-        private int __ParamThree => Program[Address + 3];
-        private int __ModeThree => __Instruction / 10000 % 10;
+        private long __ParamOne => Program[Address + 1];
+        private long __ModeOne => __Instruction / 100 % 10;
+        private long __ParamTwo => Program[Address + 2];
+        private long __ModeTwo => __Instruction / 1000 % 10;
+        private long __ParamThree => Program[Address + 3];
+        private long __ModeThree => __Instruction / 10000 % 10;
 
-        private int __OperandOne => __ModeOne == 0 ? Program[__ParamOne] : __ParamOne;
-        private int __OperandTwo => __ModeTwo == 0 ? Program[__ParamTwo] : __ParamTwo;
-        private int __OperandThree => __ModeThree == 0 ? Program[__ParamThree] : __ParamThree;
+        private long __OperandOne { get {switch(__ModeOne)
+                                    { 
+                                        case 0: 
+                                            return Program.GetAndCreate(__ParamOne); 
+                                        case 1: 
+                                            return __ParamOne;
+                                        case 2:
+                                            return Program.GetAndCreate(__ParamOne + RelativeBase);
+                                        default:
+                                            throw new NotImplementedException($"Mode {__ModeOne}");
+                                    }}}
+        private long __OperandTwo { get {switch(__ModeTwo)
+                                    { 
+                                        case 0: 
+                                            return Program.GetAndCreate(__ParamTwo); 
+                                        case 1: 
+                                            return __ParamTwo;
+                                        case 2:
+                                            return Program.GetAndCreate(__ParamTwo + RelativeBase);
+                                        default:
+                                            throw new NotImplementedException($"Mode {__ModeTwo}");
+                                    }}}
         
+        private long __OperandThree { get {switch(__ModeThree)
+                                    { 
+                                        case 0: 
+                                            return Program.GetAndCreate(__ParamThree); 
+                                        case 1: 
+                                            return __ParamThree;
+                                        case 2:
+                                            return Program.GetAndCreate(__ParamThree + RelativeBase);
+                                        default:
+                                            throw new NotImplementedException($"Mode {__ModeThree}");
+                                    }}}
 
         public void LoadProgram(string program)
         {
             Address = 0;
-            Program = program.Split(',').Select(c => int.Parse(c)).ToList();
+            RelativeBase = 0;
+            Program = program.Split(',').Select((v,i) => new {v, i})
+                                        .ToDictionary(kvp => (long)kvp.i, kvp => long.Parse(kvp.v));
         }
 
         public void LoadAlarmCode(string code)
@@ -45,23 +79,23 @@ namespace AdventOfCode._2019.Components
             return string.Join(',', Program);
         }
 
-        public List<int> Run(List<int> input = null)
+        public List<long> Run(List<long> input = null)
         {       
-            var output = new List<int>();
+            var output = new List<long>();
             while(__Opcode != 99)
             {
                 var stepLength = GetInstructionSize(__Opcode);     
                 switch(__Opcode)    
                 {
                     case 1: 
-                        Program[__ParamThree] = __OperandOne + __OperandTwo;
+                        Program[(int)__ParamThree + (__ModeThree == 0 ? 0 : RelativeBase)] = __OperandOne + __OperandTwo;
                         break;
                     case 2:
-                        Program[__ParamThree] = __OperandOne * __OperandTwo;
+                        Program[(int)__ParamThree + (__ModeThree == 0 ? 0 : RelativeBase)] = __OperandOne * __OperandTwo;
                         break;
                     case 3:
-                        try{Program[__ParamOne] = input.Shift();}
-                        catch{return output;}
+                        try{ Program[(int)__ParamOne + (__ModeOne == 0 ? 0 : RelativeBase)] = input.Shift();}
+                        catch{ return output; }
                         break;
                     case 4:
                         output.Add(__OperandOne);
@@ -69,24 +103,26 @@ namespace AdventOfCode._2019.Components
                     case 5:
                         if(__OperandOne != 0)
                         {
-                            Address = __OperandTwo;
+                            Address = (int)__OperandTwo;
                             continue;
                         }
                         break;
                     case 6:
                         if(__OperandOne == 0)
                         {
-                            Address = __OperandTwo;
+                            Address = (int)__OperandTwo;
                             continue;
                         }
                         break;
                     case 7:
-                        Program[__ParamThree] = __OperandOne < __OperandTwo ? 1 : 0;
+                        Program[(int)__ParamThree + (__ModeThree == 0 ? 0 : RelativeBase)] = __OperandOne < __OperandTwo ? 1 : 0;
                         break;
                     case 8:
-                        Program[__ParamThree] = __OperandOne == __OperandTwo ? 1 : 0;
+                        Program[(int)__ParamThree + (__ModeThree == 0 ? 0 : RelativeBase)] = __OperandOne == __OperandTwo ? 1 : 0;
                         break;
-                        
+                    case 9:
+                        RelativeBase += __OperandOne;
+                        break;
                     default:
                         throw new NotImplementedException($"Shits fucked: {__Instruction}");
                 
@@ -104,6 +140,7 @@ namespace AdventOfCode._2019.Components
                     return 1;
                 case 3:
                 case 4:
+                case 9:
                     return 2;
                 case 5:
                 case 6:
@@ -118,13 +155,13 @@ namespace AdventOfCode._2019.Components
             }
         }
 
-        public static List<List<int>> GetPermutations(List<int> list)
+        public static List<List<long>> GetPermutations(List<long> list)
         {
-            var permutations = new List<List<int>>();
+            var permutations = new List<List<long>>();
             for(int i = 0; i < list.Count; i++)
             {
                 var first = list[i];
-                var subList = new List<int>(list);
+                var subList = new List<long>(list);
                 subList.Remove(first);
                 var newList = GetPermutations(subList);
                 newList.ForEach(l => l.Add(first));
@@ -132,7 +169,7 @@ namespace AdventOfCode._2019.Components
             }
             if(permutations.Count() == 0)
             {
-                permutations.Add(new List<int>());
+                permutations.Add(new List<long>());
             }
             return permutations;
         }
