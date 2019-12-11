@@ -19,7 +19,7 @@
             advent.Days.Add(new DaySeven());
             advent.Days.Add(new DayEight());
             advent.Days.Add(new DayNine());
-
+            advent.Days.Add(new DayTen());
             advent.Days.Add(new DayEleven());
             advent.Days.Add(new DayTwelve());
             advent.Days.Add(new DayThirteen());
