@@ -13,14 +13,14 @@ namespace AdventOfCode._2019.Components
 
         public Dictionary<long,long> Program { get; set; } = new Dictionary<long,long>();
 
-        private int __Instruction => (int)Program[Address];
-        private int __Opcode => __Instruction % 100;
+        public int Instruction => (int)Program[Address];
+        private int __Opcode => Instruction % 100;
         private long __ParamOne => Program[Address + 1];
-        private long __ModeOne => __Instruction / 100 % 10;
+        private long __ModeOne => Instruction / 100 % 10;
         private long __ParamTwo => Program[Address + 2];
-        private long __ModeTwo => __Instruction / 1000 % 10;
+        private long __ModeTwo => Instruction / 1000 % 10;
         private long __ParamThree => Program[Address + 3];
-        private long __ModeThree => __Instruction / 10000 % 10;
+        private long __ModeThree => Instruction / 10000 % 10;
 
         private long __OperandOne { get {switch(__ModeOne)
                                     { 
@@ -124,7 +124,7 @@ namespace AdventOfCode._2019.Components
                         RelativeBase += __OperandOne;
                         break;
                     default:
-                        throw new NotImplementedException($"Shits fucked: {__Instruction}");
+                        throw new NotImplementedException($"Shits fucked: {Instruction}");
                 
                 }
                 Address += stepLength;

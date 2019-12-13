@@ -9,9 +9,9 @@ namespace AdventOfCode._2015
         {
             var advent = new Advent{ Year = 2015 };
             
-            advent.NewDays.Add(new DayOne());
-            advent.NewDays.Add(new DayTwo());
-            advent.NewDays.Add(new DayThree());
+            advent.Days.Add(new DayOne());
+            advent.Days.Add(new DayTwo());
+            advent.Days.Add(new DayThree());
 
             advent.ShowResults();
         }

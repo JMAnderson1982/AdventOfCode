@@ -7,20 +7,20 @@ namespace AdventOfCode.Shared
 
     public class Advent
     {
-        public List<Day> NewDays { get; set; }
+        public List<Day> Days { get; set; }
         
         public int Year { get; set; }
 
         public Advent()
         {
-            NewDays = new List<Day>();
+            Days = new List<Day>();
         }
 
         public void ShowResults()
         {
             Console.WriteLine($"\t\tAdvent of Code {Year}");   
             
-            foreach(var day in NewDays.OrderBy(d => d.Date))
+            foreach(var day in Days.OrderBy(d => d.Date))
             {
                 if(day == null) { continue; }
 
