@@ -21,7 +21,9 @@
             advent.Days.Add(new DayNine());
 
             advent.Days.Add(new DayEleven());
+            advent.Days.Add(new DayTwelve());
             advent.Days.Add(new DayThirteen());
+
 
             advent.ShowResults();
             Console.WriteLine($"\n{(DateTime.Now - now).TotalMilliseconds}ms");
