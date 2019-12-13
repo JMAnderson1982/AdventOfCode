@@ -26,14 +26,11 @@ namespace AdventOfCode._2019.Days
             output = computer.Run(new List<long> {1,output[0]});
             computer.LoadProgram(Input);
             output = computer.Run(new List<long> {0,output[0]});
-            
-            Console.WriteLine(output[0].ToString());
 
             PartOne = Amplify(GetPhases(), 0).ToString();
 
             var thrust = AmplifyFeedback(new List<long> {5,6,7,8,9});
             PartTwo = thrust.ToString();
-            Console.WriteLine(thrust);
         }
 
         public long Amplify(List<long> phases, long input)

@@ -52,10 +52,6 @@ namespace AdventOfCode._2019.Days
                 Step();
                 SaveStates();
                 TotalStepCount++;
-                if(TotalStepCount % 10000 == 0)
-                {
-                    Console.WriteLine($"{TotalStepCount} - {__XDuplicatePoint} {__YDuplicatePoint} {__ZDuplicatePoint}");
-                }
             }
             
             PartTwo = LCM(new long[] {__XDuplicatePoint, __YDuplicatePoint, __ZDuplicatePoint}).ToString();

@@ -94,8 +94,9 @@ namespace AdventOfCode._2019.Components
                         Program[(int)__ParamThree + (__ModeThree == 0 ? 0 : RelativeBase)] = __OperandOne * __OperandTwo;
                         break;
                     case 3:
-                        try{ Program[(int)__ParamOne + (__ModeOne == 0 ? 0 : RelativeBase)] = input.Shift();}
-                        catch{ return output; }
+                        if(input.Count == 0)
+                        { return output; }
+                        Program[(int)__ParamOne + (__ModeOne == 0 ? 0 : RelativeBase)] = input.Shift();
                         break;
                     case 4:
                         output.Add(__OperandOne);
