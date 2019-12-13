@@ -10,17 +10,18 @@
             var now = DateTime.Now;
             var advent = new Advent{ Year = 2019 };
 
-            advent.Days.Add(new DayOne());
-            advent.Days.Add(new DayTwo());
-            advent.Days.Add(new DayThree());
-            advent.Days.Add(new DayFour());
-            advent.Days.Add(new DayFive());
-            advent.Days.Add(new DaySix());
+            // advent.Days.Add(new DayOne());
+            // advent.Days.Add(new DayTwo());
+            // advent.Days.Add(new DayThree());
+            // advent.Days.Add(new DayFour());
+            // advent.Days.Add(new DayFive());
+            // advent.Days.Add(new DaySix());
             // advent.Days.Add(new DaySeven());
-            advent.Days.Add(new DayEight());
-            advent.Days.Add(new DayNine());
+            // advent.Days.Add(new DayEight());
+            // advent.Days.Add(new DayNine());
 
-            advent.Days.Add(new DayEleven());
+            // advent.Days.Add(new DayEleven());
+            advent.Days.Add(new DayTwelve());
 
             advent.ShowResults();
             Console.WriteLine($"\n{(DateTime.Now - now).TotalMilliseconds}ms");
