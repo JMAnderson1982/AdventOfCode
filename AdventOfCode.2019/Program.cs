@@ -16,11 +16,11 @@
             advent.Days.Add(new DayFour());
             advent.Days.Add(new DayFive());
             advent.Days.Add(new DaySix());
-            // advent.Days.Add(new DaySeven());
+            advent.Days.Add(new DaySeven());
             advent.Days.Add(new DayEight());
             advent.Days.Add(new DayNine());
 
-            // advent.Days.Add(new DayEleven());
+            advent.Days.Add(new DayEleven());
             advent.Days.Add(new DayThirteen());
 
             advent.ShowResults();
