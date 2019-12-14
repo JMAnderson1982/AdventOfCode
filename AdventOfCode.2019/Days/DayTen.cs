@@ -102,9 +102,9 @@ namespace AdventOfCode._2019.Days
                         try{
                             Console.SetCursorPosition((int)target.X + 90, (int)target.Y);
                             Console.Write(" ");
+                            Thread.Sleep(100);
                         } 
                         catch{}
-                        Thread.Sleep(100);
                         nukeCount++;
                         if(nukeCount == count)
                         {
