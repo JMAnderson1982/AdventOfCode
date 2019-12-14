@@ -11,6 +11,7 @@ namespace AdventOfCode._2019.Days
     {
         public DayTen() : base(10) { }
 
+        public bool UseFramebuffer = false;
         public override void TheNeedful()
         {
 
@@ -61,19 +62,22 @@ namespace AdventOfCode._2019.Days
 
             public void DisplayMap()
             {
-                for(int y = 0; y < Height; y++)
+                if(UseFramebuffer)
                 {
-                    for(int x = 0; x < Width; x++)
+                    for(int y = 0; y < Height; y++)
                     {
-                        try
+                        for(int x = 0; x < Width; x++)
                         {
-                            Console.SetCursorPosition(x + 90, y);
-                            Console.Write(Points
-                                            .Where(p => x == p.X && y == p.Y)
-                                            .Select(p => p.HasAsteroid ? p.HasLaser ? "L" : "#" : " ").First());
-                        }
-                        catch{return;}
-                    }   
+                            try
+                            {
+                                Console.SetCursorPosition(x + 90, y);
+                                Console.Write(Points
+                                                .Where(p => x == p.X && y == p.Y)
+                                                .Select(p => p.HasAsteroid ? p.HasLaser ? "L" : "#" : " ").First());
+                            }
+                            catch{return;}
+                        }   
+                    }
                 }
             }
 
@@ -99,12 +103,15 @@ namespace AdventOfCode._2019.Days
                             .ThenBy(a => Math.Abs(a.Y - laser.Y))
                             .First();
                         target.HasAsteroid = false;
-                        try{
-                            Console.SetCursorPosition((int)target.X + 90, (int)target.Y);
-                            Console.Write(" ");
-                            Thread.Sleep(100);
-                        } 
-                        catch{}
+                        if(UseFramebuffer)
+                        {
+                            try{
+                                Console.SetCursorPosition((int)target.X + 90, (int)target.Y);
+                                Console.Write(" ");
+                                Thread.Sleep(50);
+                            } 
+                            catch{}
+                        }
                         nukeCount++;
                         if(nukeCount == count)
                         {
