@@ -11,7 +11,6 @@ namespace AdventOfCode._2019.Days
     {
         public DayTen() : base(10) { }
 
-        public bool UseFramebuffer = false;
         public override void TheNeedful()
         {
 
@@ -32,6 +31,7 @@ namespace AdventOfCode._2019.Days
 
         public class Grid 
         {
+            public bool UseFramebuffer = false;
             public decimal Height => Points.Max(p => p.Y) + 1;
             public decimal Width => Points.Max(p => p.X) + 1;
             public List<Point> Points { get; set; } = new List<Point>();
