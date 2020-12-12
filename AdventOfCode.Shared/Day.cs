@@ -20,7 +20,11 @@ namespace AdventOfCode.Shared
             PartTwo = "--";
 
             ResetInput().Wait();
-            TheNeedful();
+            try{ TheNeedful(); }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public virtual void TheNeedful()
         {
