@@ -10,6 +10,8 @@ namespace AdventOfCode._2020
 
         public override void TheNeedful()
         {
+            var startTime = DateTime.Now;
+
             var testResultOne = ArrangeSeats(TestInput);
             if(testResultOne != 37)
             {
@@ -17,6 +19,9 @@ namespace AdventOfCode._2020
             }
             PartOne = ArrangeSeats(MainInput).ToString();
             
+            var midTime = DateTime.Now;
+            First = midTime - startTime;
+
 
             var testResultTwo = ArrangeSeatsTwo(TestInput);
             if(testResultTwo != 26)
@@ -24,6 +29,7 @@ namespace AdventOfCode._2020
                 throw new Exception("You suck (Part Two)");
             }
             PartTwo = ArrangeSeatsTwo(MainInput).ToString();
+            Second = DateTime.Now - midTime;
         }
 
         private int ArrangeSeats(string input)

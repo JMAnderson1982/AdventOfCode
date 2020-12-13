@@ -11,6 +11,7 @@ namespace AdventOfCode._2020
 
         public override void TheNeedful()
         {
+            var startTime = DateTime.Now;
             var testValue = FirstPart(TestInput);
             if(testValue != 220)
             {
@@ -18,6 +19,8 @@ namespace AdventOfCode._2020
             }
             var firstValue = FirstPart(MainInput);
             PartOne = firstValue.ToString();
+            var midTime = DateTime.Now;
+            First = midTime - startTime;
 
             var secondTestValue = SecondPart(TestInput);
             if(secondTestValue != 62)
@@ -25,6 +28,7 @@ namespace AdventOfCode._2020
                 throw new Exception("you suck (Part two!)") ;
             }
             PartTwo = SecondPart(MainInput).ToString();
+            Second = DateTime.Now - midTime;
         }
 
         private int FirstPart(string input)

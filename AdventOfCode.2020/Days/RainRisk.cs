@@ -9,6 +9,8 @@ namespace AdventOfCode._2020
 
         public override void TheNeedful()
         {
+            var startTime = DateTime.Now;
+
             var testResultOne = Manhattanize(TestInput);
             if(testResultOne != 25)
             {
@@ -16,12 +18,16 @@ namespace AdventOfCode._2020
             }
             PartOne = Manhattanize(MainInput).ToString();
 
+            var midTime = DateTime.Now;
+            First = midTime - startTime;
+
             var testResultTwo = WaypointManhattanize(TestInput);
             if(testResultTwo != 286)
             {
                 throw new Exception("You suck (Part Two)");
             }
             PartTwo = WaypointManhattanize(MainInput).ToString();
+            Second = DateTime.Now - midTime;
         }
 
         private int Manhattanize(string input)

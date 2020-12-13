@@ -12,6 +12,9 @@ namespace AdventOfCode.Shared
         public string PartTwo { get; set; }
         public string Input { get; set; }
         public int Date { get; set; }
+        
+        public TimeSpan First { get; set; }
+        public TimeSpan Second { get; set; }
 
         public Day(int date)
         {

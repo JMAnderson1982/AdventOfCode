@@ -18,13 +18,13 @@ namespace AdventOfCode.Shared
 
         public void ShowResults()
         {
-            Console.WriteLine($"\t\tAdvent of Code {Year}");   
+            Console.WriteLine($"\t\tAdvent of Code {Year}\n{"Part One".PadLeft(18)}{"Part Two".PadLeft(30)}\n");   
             
             foreach(var day in Days.OrderBy(d => d.Date))
             {
                 if(day == null) { continue; }
 
-                Console.WriteLine($"{day.Date}\t{day.PartOne}\t{day.PartTwo}");
+                Console.WriteLine($"{day.Date.ToString().PadLeft(2)}{day.PartOne.ToString().PadLeft(12)} ({day.First.TotalMilliseconds.ToString().PadLeft(7)}ms) {day.PartTwo.ToString().PadLeft(17)} ({day.Second.TotalMilliseconds.ToString().PadLeft(7)}ms)");
             }
         }
     }
